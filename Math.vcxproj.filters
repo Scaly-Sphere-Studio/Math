@@ -23,4 +23,14 @@
       <Filter>vcpkg_scripts</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\SSS\Math.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Math.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
