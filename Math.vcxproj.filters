@@ -24,12 +24,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\SSS\Math\General.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SSS\Math\Gradient.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
     <ClInclude Include="inc\SSS\Math.hpp">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Math.cpp">
+    <ClCompile Include="src\General.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

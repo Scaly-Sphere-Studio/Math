@@ -26,9 +26,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\SSS\Math.hpp" />
+    <ClInclude Include="inc\SSS\Math\Gradient.hpp" />
+    <ClInclude Include="inc\SSS\Math\General.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\General.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
