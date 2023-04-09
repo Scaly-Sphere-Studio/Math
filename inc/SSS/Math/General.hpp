@@ -76,7 +76,6 @@ namespace SSS::Math {
     // VECTORS
     //Return the normalized colinear vector of two given points in 2D space
     glm::vec3 direction_vector2D(glm::vec3 v1, glm::vec3 v2);
-
     //Return the normalized orthogonal vector of two given points in 2D space with a 90° anticlockwise rotation  
     glm::vec3 ortho_vector(glm::vec3& v1, glm::vec3& v2);
 
@@ -87,10 +86,18 @@ namespace SSS::Math {
     float intersect_factor(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
     //Return the position of the intersection point between two lines
     glm::vec3 intersection_point(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
-
+    //Using the determinant, find if three points are colinear with a given tolerance
+    bool three_point_colinear_test(glm::vec3 a, glm::vec3 b, glm::vec3 c);
 
     // ANGLES
     //Give the angle between two vectors
     float incidence_angle(glm::vec3 v1, glm::vec3 v2);
 
+    //Support Bezier curves
+    //Evaluate the point position at a given parameter [0,1] on a cubic bezier curve
+    glm::vec3 bezier_func(float t, glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
+    //Test if a point is necessary between two others in a bezier function and add it to the path
+    //Used in the binary filled bezier curve path creator
+    void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
+        glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
 }

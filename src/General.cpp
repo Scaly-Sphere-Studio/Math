@@ -1,4 +1,5 @@
 #include "SSS/Math.hpp"
+static constexpr float  THREE_POINT_ALIGNEMENT_TOLERANCE = 0.023f;
 
 namespace SSS::Math {
 
@@ -58,4 +59,30 @@ namespace SSS::Math {
         return glm::acos(std::clamp(glm::dot(v1, v2) / (glm::length(v1) * glm::length(v2)), -1.0f, 1.0f));
     }
 
+    glm::vec3 bezier_func(float t, glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d) {
+        return glm::vec3(std::powf((1.f - t), 3.f)) * a +
+            glm::vec3(3.f * std::powf((1.f - t), 2.f) * t) * b +
+            glm::vec3(3.f * (1.f - t) * std::powf(t, 2.f)) * c +
+            glm::vec3(std::powf(t, 3.f)) * d;
+    }
+
+    bool three_point_colinear_test(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
+        //NORMALIZED 3 POINT ALIGNEMENT TEST
+        glm::vec2 ab = SSS::Math::direction_vector2D(a, b);
+        glm::vec2 ac = SSS::Math::direction_vector2D(a, c);
+        return std::abs(glm::determinant(glm::mat2(ab, ac))) > THREE_POINT_ALIGNEMENT_TOLERANCE;
+    }
+
+    void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
+        glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d) {
+
+        float t = (pa.first + pb.first) / 2.0f;
+        std::pair<float, glm::vec3> pm = std::make_pair(t, bezier_func(t, a, b, c, d));
+
+        if (three_point_colinear_test(pa.second, pm.second, pb.second)) {
+            v.emplace_back(pm);
+            bezier_recurs(v, pa, pm, a, b, c, d);
+            bezier_recurs(v, pm, pb, a, b, c, d);
+        }
+    }
 }
