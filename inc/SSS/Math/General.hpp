@@ -3,6 +3,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <algorithm>
+#include <vector>
 
 #include <glm/glm.hpp>
 
@@ -100,4 +101,10 @@ namespace SSS::Math {
     //Used in the binary filled bezier curve path creator
     void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
         glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
+
+
+    //SORTING
+    bool sort_pair_vec(std::pair<float, glm::vec3>& pa, std::pair<float, glm::vec3>& pb) {
+        return pa.first > pb.first;
+    }
 }
