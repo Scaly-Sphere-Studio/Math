@@ -7,6 +7,11 @@
 
 #include <glm/glm.hpp>
 
+#ifdef SSS_MATH_EXPORTS
+#define SSS_MATH_API __declspec(dllexport)
+#else
+#define SSS_MATH_API __declspec(dllimport)
+#endif
 
 namespace SSS::Math {
 
@@ -68,43 +73,43 @@ namespace SSS::Math {
         glm::vec3(0, 0, 1)
     };
     //Define the counter clockwise rotation 3D matrix for 2D space around the z axis
-    glm::mat3 rotation_matrix2D_ccw(double angle);
+    SSS_MATH_API glm::mat3 rotation_matrix2D_ccw(double angle);
     //Define the clockwise rotation matrix for 2D space
-    glm::mat3 rotation_matrix2D_cw(double angle);
+    SSS_MATH_API glm::mat3 rotation_matrix2D_cw(double angle);
 
 
 
     // VECTORS
     //Return the normalized colinear vector of two given points in 2D space
-    glm::vec3 direction_vector2D(glm::vec3 v1, glm::vec3 v2);
+    SSS_MATH_API glm::vec3 direction_vector2D(glm::vec3 v1, glm::vec3 v2);
     //Return the normalized orthogonal vector of two given points in 2D space with a 90° anticlockwise rotation  
-    glm::vec3 ortho_vector(glm::vec3& v1, glm::vec3& v2);
+    SSS_MATH_API glm::vec3 ortho_vector(glm::vec3& v1, glm::vec3& v2);
 
 
     // INTERSECTION AND GEOMETRY
     //Calculate the intermediate factor for the two lines intersection algorithm
     //The factor give information about the natures of the lines relationship
-    float intersect_factor(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
+    SSS_MATH_API float intersect_factor(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
     //Return the position of the intersection point between two lines
-    glm::vec3 intersection_point(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
+    SSS_MATH_API glm::vec3 intersection_point(glm::vec3& p1, glm::vec3& p2, glm::vec3& p3, glm::vec3& p4);
     //Using the determinant, find if three points are colinear with a given tolerance
-    bool three_point_colinear_test(glm::vec3 a, glm::vec3 b, glm::vec3 c);
+    SSS_MATH_API bool three_point_colinear_test(glm::vec3 a, glm::vec3 b, glm::vec3 c);
 
     // ANGLES
     //Give the angle between two vectors
-    float incidence_angle(glm::vec3 v1, glm::vec3 v2);
+    SSS_MATH_API float incidence_angle(glm::vec3 v1, glm::vec3 v2);
 
     //Support Bezier curves
     //Evaluate the point position at a given parameter [0,1] on a cubic bezier curve
-    glm::vec3 bezier_func(float t, glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
+    SSS_MATH_API glm::vec3 bezier_func(float t, glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
     //Test if a point is necessary between two others in a bezier function and add it to the path
     //Used in the binary filled bezier curve path creator
-    void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
+    SSS_MATH_API void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
         glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
 
 
     //SORTING
-    bool sort_pair_vec(std::pair<float, glm::vec3>& pa, std::pair<float, glm::vec3>& pb) {
+    inline bool sort_pair_vec(std::pair<float, glm::vec3>& pa, std::pair<float, glm::vec3>& pb) {
         return pa.first > pb.first;
     }
 }

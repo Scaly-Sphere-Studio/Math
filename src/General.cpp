@@ -1,4 +1,4 @@
-#include "SSS/Math.hpp"
+#include "Math.hpp"
 static constexpr float  THREE_POINT_ALIGNEMENT_TOLERANCE = 0.023f;
 
 namespace SSS::Math {
