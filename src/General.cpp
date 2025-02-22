@@ -25,7 +25,7 @@ namespace SSS::Math {
     }
 
 
-    glm::vec3 ortho_vector(glm::vec3& v1, glm::vec3& v2)
+    glm::vec3 ortho_vector(glm::vec3 v1, glm::vec3 v2)
     {
         return glm::vec3(-direction_vector2D(v1, v2).y, direction_vector2D(v1, v2).x, v1.z);
     }

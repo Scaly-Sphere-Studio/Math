@@ -83,7 +83,7 @@ namespace SSS::Math {
     //Return the normalized colinear vector of two given points in 2D space
     SSS_MATH_API glm::vec3 direction_vector2D(glm::vec3 v1, glm::vec3 v2);
     //Return the normalized orthogonal vector of two given points in 2D space with a 90° anticlockwise rotation  
-    SSS_MATH_API glm::vec3 ortho_vector(glm::vec3& v1, glm::vec3& v2);
+    SSS_MATH_API glm::vec3 ortho_vector(glm::vec3 v1, glm::vec3 v2);
 
 
     // INTERSECTION AND GEOMETRY
