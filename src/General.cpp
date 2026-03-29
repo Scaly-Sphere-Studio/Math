@@ -89,8 +89,8 @@ namespace SSS::Math {
         }
     }
 
-    /* [MISC] */
-    static std::array<float, 4> BezierCoeffs(float P0, float P1, float P2, float P3)
+    /* Bezier intersection */
+    std::array<float, 4> BezierCoeffs(const float P0, const float P1, const float P2, const float P3)
     {
         std::array<float, 4> Z;
         Z[0] = -P0 + 3.0f * P1 + -3.0f * P2 + P3;
@@ -102,7 +102,7 @@ namespace SSS::Math {
     }
 
 
-    static std::array<float, 3> CubicRoots(float a, float b, float c, float d)
+    std::array<float, 3> CubicRoots(const float a, const float b,  const float c, const float d)
     {
 
         float A = b / a;
@@ -157,11 +157,10 @@ namespace SSS::Math {
 
     //px and py are the coordinates of the start, first tangent, second tangent, end in that order. length = 4
     //lx and ly are the start then end coordinates of the stright line. length = 2
-    static bool cubic_bezier_segment_intersection(glm::vec3 b_a, glm::vec3 b_b, glm::vec3 b_c, glm::vec3 b_d,
-        glm::vec3 s_a, glm::vec3 s_b) {
-
+    bool cubic_bezier_segment_intersection(const glm::vec3 b_a, const glm::vec3 b_b, const glm::vec3 b_c, const glm::vec3 b_d,
+        const glm::vec3 s_a, const glm::vec3 s_b) 
+    {
         glm::vec2 X;
-
 
         float A = s_b.y - s_a.y;      //A=y2-y1
         float B = s_a.x - s_b.x;      //B=x1-x2

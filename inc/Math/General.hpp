@@ -107,7 +107,11 @@ namespace SSS::Math {
     //Used in the binary filled bezier curve path creator
     SSS_MATH_API void bezier_recurs(std::vector<std::pair<float, glm::vec3>>& v, const std::pair<float, glm::vec3> pa, const std::pair<float, glm::vec3> pb,
         glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d);
-
+    //Intersection between a cubic bezier line and a segment
+    SSS_MATH_API bool cubic_bezier_segment_intersection(const glm::vec3 b_a, const glm::vec3 b_b, const glm::vec3 b_c, const glm::vec3 b_d,
+        const glm::vec3 s_a, const glm::vec3 s_b);
+    //Cubic Roots ax^3 + bx^2 + cx + d
+    SSS_MATH_API std::array<float, 3> CubicRoots(const float a, const float b, const float c, const float d);
 
     //SORTING
     inline bool sort_pair_vec(std::pair<float, glm::vec3>& pa, std::pair<float, glm::vec3>& pb) {
