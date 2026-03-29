@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Math.hpp" />
+    <ClInclude Include="inc\Math\EaseFunctions.hpp" />
     <ClInclude Include="inc\Math\Gradient.hpp" />
     <ClInclude Include="inc\Math\General.hpp" />
   </ItemGroup>
