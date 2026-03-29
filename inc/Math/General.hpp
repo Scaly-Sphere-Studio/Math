@@ -4,6 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include <array>
 
 #include <glm/glm.hpp>
 
