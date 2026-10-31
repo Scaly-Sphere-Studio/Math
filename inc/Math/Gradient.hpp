@@ -145,10 +145,10 @@ namespace SSS::Math
 
                 // Apply easing
                 if (k1.easing == EaseType::Custom && k1.customEasing) {
-                    p = k1.customEasing(t);
+                    p = k1.customEasing(p);
                 }
                 else {
-                    p = apply(k1.easing, t);
+                    p = apply(k1.easing, p);
                 }
 
                 return interpolate(k1.value, k2.value, p);
